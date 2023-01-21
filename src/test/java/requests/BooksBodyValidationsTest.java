@@ -7,11 +7,9 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
-import org.apache.http.Header;
-import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 
-public class GET_Requests {
+public class BooksBodyValidationsTest {
 
     public static void main(String[] args) {
         ClientHttp baseURl = new ClientHttp();
@@ -21,8 +19,16 @@ public class GET_Requests {
 
         int statusCode = response.getStatusCode();
         System.out.println("Response status code is: " + statusCode);
+
         Assertions.assertEquals(200, statusCode);
         Headers header = response.getHeaders();
-        System.out.println("Headers for response are: " + header);
+        int countOfHeaders = header.asList().size();
+        Assertions.assertEquals(7, countOfHeaders);
+        String headerValue = response.getHeader("Content-Type");
+        Assertions.assertEquals("application/json; charset=utf-8", headerValue);
+
+        String responseBOdyAsString = response.getBody().asString();
+        Assertions.assertTrue(responseBOdyAsString.contains("Git Pocket Guide"));
+
     }
 }
