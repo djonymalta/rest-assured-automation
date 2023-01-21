@@ -5,7 +5,7 @@ public class ClientHttp {
 
     }
     public String baseUrl(){
-        String baseUrl = "http://bookstore.toolsqa.com";
+        String baseUrl = "https://bookstore.toolsqa.com";
         return baseUrl;
     }
 }
