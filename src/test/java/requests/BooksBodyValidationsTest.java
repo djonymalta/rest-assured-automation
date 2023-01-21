@@ -8,10 +8,12 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class BooksBodyValidationsTest {
 
-    public static void main(String[] args) {
+    @Test
+    public  void booksValidation(){
         ClientHttp baseURl = new ClientHttp();
 
         RequestSpecification httpRequest = RestAssured.given();
@@ -31,4 +33,5 @@ public class BooksBodyValidationsTest {
         Assertions.assertTrue(responseBOdyAsString.contains("Git Pocket Guide"));
 
     }
+
 }
